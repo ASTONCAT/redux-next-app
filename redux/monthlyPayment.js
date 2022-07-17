@@ -1,18 +1,18 @@
-export function calc() {
+export function calc(amount) {
     return {
         type: "CALC",
-        payload: 1234
+        payload: amount
     }
 }
 
-function monthlyPaymentReducer(monthlyPayment = "1000", action) {
+function monthlyPaymentReducer(monthlyPayment = 1358, action) {
     switch (action.type) {
         case "CALC":
-            return {
-                value: state.value + action.payload,
-                result: "processing …"
-            }
+            const fakeCalc = (action.payload * 0.07) / 12
+            return fakeCalc
         default:
-            return state
+            return monthlyPayment
     }
   }
+
+  export default monthlyPaymentReducer
