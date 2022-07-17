@@ -1,7 +1,9 @@
 import classes from './Calculator.module.css'
+import { useSelector } from 'react-redux'
 
 function Calculator() {
     
+    const requestedAmount = useSelector(state => state.amount.requested)
     
     async function handleChange(event) {
         event.preventDefault()
@@ -39,7 +41,7 @@ function Calculator() {
         // store.dispatch(increment())
     }
     
-    function handleDecrement(event) {
+    function handleDecrement() {
         // store.dispatch(decrement())
     }
 
@@ -49,7 +51,7 @@ function Calculator() {
                 type="number"
                 pattern='[0-9]{4,6}'
                 id='amount'
-                placeholder="6000"
+                placeholder={requestedAmount}
                 onChange={handleChange}
             />
 
