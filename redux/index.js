@@ -1,5 +1,4 @@
-const redux = require("redux")
-const { combineReducers, createStore } = redux
+import { combineReducers, createStore } from 'redux'
 import amountReducer from "./requestedAmount"
 import monthlyPaymentReducer from "./monthlyPayment"
 import loaderReducer from "./spinnerLoader"
