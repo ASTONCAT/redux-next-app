@@ -1,9 +1,11 @@
 import classes from './Calculator.module.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import {increment, decrement} from '../redux/requestedAmount'
 
 function Calculator() {
     
     const requestedAmount = useSelector(state => state.amount.requested)
+    const dispatch = useDispatch()
     
     async function handleChange(event) {
         event.preventDefault()
@@ -37,14 +39,6 @@ function Calculator() {
 
     }
 
-    function handleIncrement() {
-        // store.dispatch(increment())
-    }
-    
-    function handleDecrement() {
-        // store.dispatch(decrement())
-    }
-
     return (
         <form className={classes.calculator}>
             <input
@@ -56,8 +50,8 @@ function Calculator() {
             />
 
             <div className={classes.setAmount}>
-                <button onMouseDown={handleIncrement}>+</button>
-                <button onMouseDown={handleDecrement}>-</button>
+                <button onMouseDown={() => dispatch(increment())}>+</button>
+                <button onMouseDown={() => dispatch(decrement())}>-</button>
             </div>
 
         </form>
