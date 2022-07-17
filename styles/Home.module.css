@@ -56,6 +56,10 @@
   font-size: 1.5rem;
 }
 
+.disclaimer {
+  margin: 0;
+}
+
 .code {
   background: #fafafa;
   border-radius: 5px;
