@@ -14,8 +14,6 @@ function Calculator() {
             amount: event.target.value
         }
 
-        // console.log(data)
-
         if (data.amount > 6000 && data.amount < 6000000 ) {
 
             const JSONdata = JSON.stringify(data)
@@ -45,13 +43,13 @@ function Calculator() {
                 type="number"
                 pattern='[0-9]{4,6}'
                 id='amount'
-                placeholder={requestedAmount}
+                value={requestedAmount}
                 onChange={handleChange}
             />
 
             <div className={classes.setAmount}>
-                <button onMouseDown={() => dispatch(increment())}>+</button>
-                <button onMouseDown={() => dispatch(decrement())}>-</button>
+                <button type='button' onMouseDown={() => dispatch(increment())}>+</button>
+                <button type='button' onMouseDown={() => dispatch(decrement())}>-</button>
             </div>
 
         </form>

@@ -1,7 +1,7 @@
 // setting the minimum and maximum loan amount and the requested loan amount 
 
 const initialAmount = {
-    requested: 20000,
+    requested: 20001,
     min: 20000,
     max: 800000
 }
