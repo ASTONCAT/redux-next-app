@@ -1,59 +1,44 @@
 import classes from './Calculator.module.css'
 import { useSelector, useDispatch } from 'react-redux'
-import {increment, decrement} from '../redux/requestedAmount'
+import { increment, decrement, setAmount } from '../redux/requestedAmount'
 
 function Calculator() {
-    
-    const requestedAmount = useSelector(state => state.amount.requested)
-    const dispatch = useDispatch()
-    
-    async function handleChange(event) {
-        event.preventDefault()
+	const amount = useSelector((state) => state.amount)
+	const dispatch = useDispatch()
 
-        const data = {
-            amount: event.target.value
-        }
+	function handleChange(event) {
+		return dispatch(setAmount(event.target.value))
+	}
 
-        if (data.amount > 6000 && data.amount < 6000000 ) {
+	function zvetsit() {
+		return dispatch(increment())
+	}
 
-            const JSONdata = JSON.stringify(data)
+	return (
+		<form className={classes.calculator}>
+			<input
+				className={
+					amount.requested >= amount.min && amount.requested <= amount.max
+						? classes.rightAmount
+						: classes.wrongAmount
+				}
+				type="number"
+				pattern="[0-9]{4,6}"
+				id="amount"
+				value={amount.requested}
+				onChange={handleChange}
+			/>
 
-            const endpoint = '/api/installment-calculation'
-
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSONdata,
-            }
-
-            const response = await fetch(endpoint, options)
-
-            const result = await response.json()
-            alert(`Toto je tvůj výpočet: ${result.vypocet}`)
-
-        }
-
-    }
-
-    return (
-        <form className={classes.calculator}>
-            <input
-                type="number"
-                pattern='[0-9]{4,6}'
-                id='amount'
-                value={requestedAmount}
-                onChange={handleChange}
-            />
-
-            <div className={classes.setAmount}>
-                <button type='button' onMouseDown={() => dispatch(increment())}>+</button>
-                <button type='button' onMouseDown={() => dispatch(decrement())}>-</button>
-            </div>
-
-        </form>
-    )
+			<div className={classes.amountSlider}>
+				<button type="button" onMouseDown={zvetsit}>
+					+
+				</button>
+				<button type="button" onMouseDown={() => dispatch(decrement())}>
+					-
+				</button>
+			</div>
+		</form>
+	)
 }
 
 export default Calculator

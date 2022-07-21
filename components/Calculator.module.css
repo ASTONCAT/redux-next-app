@@ -1,6 +1,12 @@
 .calculator {
     padding: 2rem 1rem 1rem;
   }
-.setAmount {
+.amountSlider {
     padding: 1rem;
+}
+.rightAmount {
+  color: initial;
+}
+.wrongAmount {
+  color: red;
 }

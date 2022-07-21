@@ -1,5 +1,6 @@
 // setting the minimum and maximum loan amount and the requested loan amount 
 
+// initial state will come from API enpoint later using getStaticProps() 
 const initialAmount = {
     requested: 20001,
     min: 20000,
@@ -20,6 +21,13 @@ export function decrement() {
     }
 }
 
+export function setAmount(amount) {
+    return {
+        type: "SET_AMOUNT",
+        payload: amount
+    }
+}
+
 function amountReducer(amount = initialAmount, action) {
     switch (action.type) {
         case "INCREMENT":
@@ -33,6 +41,11 @@ function amountReducer(amount = initialAmount, action) {
             return {
                 ...amount,
                 requested: diff >= amount.min ? diff : amount.requested
+            }
+        case "SET_AMOUNT":
+            return {
+                ...amount,
+                requested: action.payload
             }
         default:
             return amount
