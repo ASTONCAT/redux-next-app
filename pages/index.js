@@ -1,7 +1,21 @@
+import { useSelector } from 'react-redux'
+import { wrapper } from '../redux'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Calculator from '../components/Calculator'
+
+export const getStaticProps = wrapper.getStaticProps(store => ({preview}) => {
+  if (process.env.DB_DATA_AVAILABLE){
+    console.log('data z databáze jsou READY')
+  } else {
+    console.log('data z databáze NEJSOU DOSTUPNÁ')
+  }
+  // fetch data from an API or databaze or files
+  store.dispatch({
+    type: 'SHOW_LOADER'
+  })
+})  
 
 export default function Home() {
   return (

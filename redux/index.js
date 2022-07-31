@@ -23,12 +23,14 @@ const rootReducer = combineReducers({
 
 const reducer = (state, action) => {
   if (action.type === HYDRATE) {
+    console.log('Page going to be HYDRATED')
     const nextState = {
       ...state, // use previous state
-      ...action.payload, // apply data from hydration
+      ...action.payload // apply data from hydration
     }
     return nextState
   } else {
+    console.log('Page DONT NEED TO BE hydrated')
     return rootReducer(state, action)
   }
 }
