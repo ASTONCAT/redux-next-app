@@ -30,6 +30,7 @@ function SetupForm(props) {
 					<label htmlFor="requestedAmount">Requested Amount</label>
 					<input
 						type="number"
+						defaultValue={props.reqValue}
 						required
 						id="requestedAmount"
 						ref={requestedAmountInputRef}
@@ -39,6 +40,7 @@ function SetupForm(props) {
 					<label htmlFor="minAmount">Min Amount</label>
 					<input
 						type="number"
+						defaultValue={props.minValue}
 						required
 						id="minAmount"
 						ref={minAmountInputRef}
@@ -48,6 +50,7 @@ function SetupForm(props) {
 					<label htmlFor="maxAmount">Max Amount</label>
 					<input
 						type="number"
+						defaultValue={props.maxValue}
 						required
 						id="maxAmount"
 						ref={maxAmountInputRef}
