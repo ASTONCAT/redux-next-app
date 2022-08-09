@@ -16,7 +16,7 @@ export default function LoanCalcSetup({ calcSetup }) {
 
 		const result = await response.json()
 
-		console.log(result)
+		console.log(result) // hlášku na FE, že data vložena
 
 	}
 	return (

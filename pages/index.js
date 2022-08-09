@@ -1,23 +1,25 @@
 import { useSelector } from 'react-redux'
 import { wrapper } from '../redux'
+import { connectToDatabase } from '../util/mongodb'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Calculator from '../components/Calculator'
+  
+  export const getStaticProps = wrapper.getStaticProps(store => async (context) => {
+    const { db } = await connectToDatabase()
 
-export const getStaticProps = wrapper.getStaticProps(store => ({preview}) => {
-  if (process.env.DB_DATA_AVAILABLE){
-    console.log('data z databáze jsou READY')
-  } else {
-    console.log('data z databáze NEJSOU DOSTUPNÁ')
-  }
-  // fetch data from an API or databaze or files
-  store.dispatch({
-    type: 'SHOW_LOADER'
-  })
-})  
+    const calcSetup = await db.collection('setup').find({}).limit(1).toArray()
 
-export default function Home() {
+    return {
+      props: {
+        calcSetup: JSON.parse(JSON.stringify(calcSetup))
+      }
+    }
+  }) 
+  
+
+export default function Home({ calcSetup }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -31,7 +33,7 @@ export default function Home() {
           Expres půjčku schválíme online do 5 minut
         </h1>
 
-        <Calculator />
+        <Calculator setup={calcSetup} />
 
         <p className={styles.disclaimer}>
           Výše uvedené splátky je pouze orientační a od výsledné achválené výše splátky se může lišit.

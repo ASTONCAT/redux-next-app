@@ -10,14 +10,10 @@ function SetupForm(props) {
 	function submitHandler(event) {
 		event.preventDefault()
 
-        const enteredReqAmount = requestedAmountInputRef.current.value
-        const enteredMinAmount = minAmountInputRef.current.value
-        const enteredMaxAmount = maxAmountInputRef.current.value
-
         const enteredData = {
-            reqAmount: enteredReqAmount,
-            minAmount: enteredMinAmount,
-            maxAmount: enteredMaxAmount
+            reqAmount: requestedAmountInputRef.current.value,
+            minAmount: minAmountInputRef.current.value,
+            maxAmount: maxAmountInputRef.current.value
         }
 
         props.onSubmitData(enteredData)

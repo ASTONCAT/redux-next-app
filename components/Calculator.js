@@ -2,8 +2,10 @@ import classes from './Calculator.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement, setAmount } from '../redux/requestedAmount'
 
-function Calculator() {
+function Calculator(props) {
+	console.log(props)
 	const amount = useSelector((state) => state.amount)
+
 	const dispatch = useDispatch()
 
 	function handleChange(event) {
