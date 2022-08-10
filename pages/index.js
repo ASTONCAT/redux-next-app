@@ -8,21 +8,18 @@ import Calculator from '../components/Calculator'
 
 export const getStaticProps = wrapper.getStaticProps(
 	(store) => async () => {
-		console.log('Homepage getStaticProps uses the store to dispatch things')
 
 		const { db } = await connectToDatabase()
 		const calcSetup = await db.collection('setup').find({}).limit(1).toArray()
 
-    const curSetup = JSON.parse(JSON.stringify(calcSetup))
-
 		store.dispatch({
 			type: "SET_AMOUNT",
-			payload: curSetup[0].reqAmount
+			payload: calcSetup[0].reqAmount
 		})
 
 		store.dispatch({
 			type: "SET_MIN_AMOUNT",
-			payload: curSetup[0].minAmount
+			payload: calcSetup[0].minAmount
 		})
 
 	}
