@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
 
 const reducer = (state, action) => {
   if (action.type === HYDRATE) {
+    console.log('HYDRATE', state, action.payload)
     const nextState = {
       ...state, // use previous state
       ...action.payload // apply data from hydration

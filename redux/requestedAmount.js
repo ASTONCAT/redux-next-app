@@ -21,13 +21,6 @@ export function setAmount(amount) {
     }
 }
 
-export function setMinAmount(amount) {
-    return {
-        type: "SET_MIN_AMOUNT",
-        payload: amount
-    }
-}
-
 const initialValues = {
     requested: 100000,
     min: 20000,
@@ -57,6 +50,11 @@ function amountReducer(amount = initialValues, action) {
             return {
                 ...amount,
                 min: action.payload
+            }
+        case "SET_MAX_AMOUNT":
+            return {
+                ...amount,
+                max: action.payload
             }
         default:
             return amount

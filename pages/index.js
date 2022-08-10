@@ -22,6 +22,11 @@ export const getStaticProps = wrapper.getStaticProps(
 			payload: calcSetup[0].minAmount
 		})
 
+		store.dispatch({
+			type: "SET_MAX_AMOUNT",
+			payload: calcSetup[0].maxAmount
+		})
+
 	}
 )
 
