@@ -13,9 +13,16 @@ export const getStaticProps = wrapper.getStaticProps(
 		const { db } = await connectToDatabase()
 		const calcSetup = await db.collection('setup').find({}).limit(1).toArray()
 
+    const curSetup = JSON.parse(JSON.stringify(calcSetup))
+
 		store.dispatch({
 			type: "SET_AMOUNT",
-			payload: calcSetup[0].reqAmount
+			payload: curSetup[0].reqAmount
+		})
+
+		store.dispatch({
+			type: "SET_MIN_AMOUNT",
+			payload: curSetup[0].minAmount
 		})
 
 	}

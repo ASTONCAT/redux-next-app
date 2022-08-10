@@ -31,7 +31,6 @@ const reducer = (state, action) => {
     }
     return nextState
   } else {
-    console.log('IS_DRY', state, action.payload)
     return rootReducer(state, action)
   }
 }
