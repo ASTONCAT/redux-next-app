@@ -1,3 +1,4 @@
+// inspired by https://github.com/vercel/next.js/blob/canary/examples/with-redux-wrapper/store/store.js
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import thunkMiddleware from 'redux-thunk'
@@ -23,14 +24,14 @@ const rootReducer = combineReducers({
 
 const reducer = (state, action) => {
   if (action.type === HYDRATE) {
-    console.log('Page going to be HYDRATED')
+    console.log('HYDRATE', state, action.payload)
     const nextState = {
       ...state, // use previous state
       ...action.payload // apply data from hydration
     }
     return nextState
   } else {
-    console.log('Page DONT NEED TO BE hydrated')
+    console.log('IS_DRY', state, action.payload)
     return rootReducer(state, action)
   }
 }
