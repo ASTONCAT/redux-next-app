@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "mongodb": "^4.8.1",
     "next": "12.2.2",
     "next-redux-wrapper": "^7.0.5",
