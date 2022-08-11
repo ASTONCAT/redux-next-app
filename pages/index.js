@@ -6,29 +6,32 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Calculator from '../components/Calculator'
 
-export const getStaticProps = wrapper.getStaticProps(
-	(store) => async () => {
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
+	const { db } = await connectToDatabase()
+	const calcSetup = await db.collection('setup').find({}).limit(1).toArray()
 
-		const { db } = await connectToDatabase()
-		const calcSetup = await db.collection('setup').find({}).limit(1).toArray()
+	store.dispatch({
+		type: 'SET_AMOUNT',
+		payload: calcSetup[0].reqAmount
+	})
 
-		store.dispatch({
-			type: "SET_AMOUNT",
-			payload: calcSetup[0].reqAmount
-		})
+	store.dispatch({
+		type: 'SET_MIN_AMOUNT',
+		payload: calcSetup[0].minAmount
+	})
 
-		store.dispatch({
-			type: "SET_MIN_AMOUNT",
-			payload: calcSetup[0].minAmount
-		})
+	store.dispatch({
+		type: 'SET_MAX_AMOUNT',
+		payload: calcSetup[0].maxAmount
+	})
 
-		store.dispatch({
-			type: "SET_MAX_AMOUNT",
-			payload: calcSetup[0].maxAmount
-		})
-
+	return {
+		props: {
+			message: 'revalidace'
+		},
+		revalidate: 150 // In seconds
 	}
-)
+})
 
 export default function Home() {
 	return (
