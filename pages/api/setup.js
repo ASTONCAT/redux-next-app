@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongodb'
 import { connectToDatabase } from '../../util/mongodb'
 
-export default async (req, res) => {
+const handler = async (req, res) => {
 	if (req.method === 'POST') {
 		const { db } = await connectToDatabase()
 
@@ -30,3 +30,5 @@ export default async (req, res) => {
 		})
 	}
 }
+
+export default handler
