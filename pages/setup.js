@@ -1,11 +1,13 @@
 import { connectToDatabase } from '../util/mongodb'
 import SetupForm from '../components/SetupForm'
+import React from 'react'
 // our-domain.com/setup
 
 export default function LoanCalcSetup({ calcSetup }) {
+	const [message, setMessage] = React.useState('')
+
 	async function submitDataHandler(enteredData) {
-		// add the db document id
-		enteredData.docId = calcSetup[0]._id
+		enteredData.docId = calcSetup[0]._id // add the db document id
 		const response = await fetch('/api/setup', {
 			method: 'POST',
 			body: JSON.stringify(enteredData),
@@ -15,9 +17,7 @@ export default function LoanCalcSetup({ calcSetup }) {
 		})
 
 		const result = await response.json()
-
-		console.log(result) // hlášku na FE, že data vložena
-
+		setMessage(result.message)
 	}
 	return (
 		<SetupForm
@@ -25,6 +25,7 @@ export default function LoanCalcSetup({ calcSetup }) {
 			minValue={calcSetup[0].minAmount}
 			maxValue={calcSetup[0].maxAmount}
 			onSubmitData={submitDataHandler}
+			message={message}
 		/>
 	)
 }

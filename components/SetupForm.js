@@ -56,6 +56,7 @@ function SetupForm(props) {
                     <button>Submit</button>
                 </div>
 			</form>
+			<div>{props.message}</div>
 		</Card>
 	)
 }
