@@ -30,6 +30,9 @@ function SetupForm(props) {
 						required
 						id="requestedAmount"
 						ref={requestedAmountInputRef}
+						step="100"
+						min="100"
+						max="67108864"
 					/>
 				</div>
 				<div className={classes.control}>
@@ -40,6 +43,9 @@ function SetupForm(props) {
 						required
 						id="minAmount"
 						ref={minAmountInputRef}
+						step="100"
+						min="200"
+						max="67108864"
 					/>
 				</div>
 				<div className={classes.control}>
@@ -50,6 +56,9 @@ function SetupForm(props) {
 						required
 						id="maxAmount"
 						ref={maxAmountInputRef}
+						step="100"
+						min="100"
+						max="67108864"
 					/>
 				</div>
                 <div className={classes.submit}>
