@@ -4,7 +4,7 @@ import React from 'react'
 // our-domain.com/setup
 
 export default function LoanCalcSetup({ calcSetup }) {
-	const [message, setMessage] = React.useState('')
+	const [message, setMessage] = React.useState({error: false, text: ''})
 
 	async function submitDataHandler(enteredData) {
 		enteredData.docId = calcSetup[0]._id // add the db document id
@@ -17,7 +17,7 @@ export default function LoanCalcSetup({ calcSetup }) {
 		})
 
 		const result = await response.json()
-		setMessage(result.message)
+		setMessage({error: result.error, text: result.message})
 	}
 	return (
 		<SetupForm

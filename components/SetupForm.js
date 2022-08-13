@@ -18,7 +18,7 @@ function SetupForm(props) {
 
 		props.onSubmitData(enteredData)
 	}
-
+console.log(props.message)
 	return (
 		<Card>
 			<form className={classes.form} onSubmit={submitHandler}>
@@ -65,8 +65,8 @@ function SetupForm(props) {
 					<button>Submit</button>
 				</div>
 			</form>
-			<div className={props.error ? classes.wrongAmount : classes.rightAmount}>
-				{props.message}
+			<div className={props.message.error ? classes.wrongAmount : classes.rightAmount}>
+				{props.message.text}
 			</div>
 		</Card>
 	)
