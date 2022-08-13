@@ -10,13 +10,13 @@ function SetupForm(props) {
 	function submitHandler(event) {
 		event.preventDefault()
 
-        const enteredData = {
-            reqAmount: Number(requestedAmountInputRef.current.value),
-            minAmount: Number(minAmountInputRef.current.value),
-            maxAmount: Number(maxAmountInputRef.current.value)
-        }
+		const enteredData = {
+			reqAmount: Number(requestedAmountInputRef.current.value),
+			minAmount: Number(minAmountInputRef.current.value),
+			maxAmount: Number(maxAmountInputRef.current.value)
+		}
 
-        props.onSubmitData(enteredData)
+		props.onSubmitData(enteredData)
 	}
 
 	return (
@@ -44,7 +44,7 @@ function SetupForm(props) {
 						id="minAmount"
 						ref={minAmountInputRef}
 						step="100"
-						min="200"
+						min="100"
 						max="67108864"
 					/>
 				</div>
@@ -57,15 +57,17 @@ function SetupForm(props) {
 						id="maxAmount"
 						ref={maxAmountInputRef}
 						step="100"
-						min="100"
+						min="200"
 						max="67108864"
 					/>
 				</div>
-                <div className={classes.submit}>
-                    <button>Submit</button>
-                </div>
+				<div className={classes.submit}>
+					<button>Submit</button>
+				</div>
 			</form>
-			<div>{props.message}</div>
+			<div className={props.error ? classes.rightAmount : classes.wrongAmount}>
+				{props.message}
+			</div>
 		</Card>
 	)
 }

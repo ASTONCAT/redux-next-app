@@ -7,3 +7,9 @@
 .form label {
     margin-right: 1rem;
 }
+.rightAmount {
+    color: initial;
+  }
+  .wrongAmount {
+    color: red;
+  }

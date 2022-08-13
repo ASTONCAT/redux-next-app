@@ -23,6 +23,7 @@ const handler = async (req, res) => {
 					)
 					// Send a response
 					res.status(201).json({
+						error: false,
 						message: 'A new setup inserted!'
 					})
 				} else {
@@ -48,6 +49,7 @@ const handler = async (req, res) => {
 		}
 	} else {
 		res.status(405).json({
+			error: true,
 			message: 'Method Not Allowed!'
 		})
 	}
