@@ -65,7 +65,7 @@ function SetupForm(props) {
 					<button>Submit</button>
 				</div>
 			</form>
-			<div className={props.error ? classes.rightAmount : classes.wrongAmount}>
+			<div className={props.error ? classes.wrongAmount : classes.rightAmount}>
 				{props.message}
 			</div>
 		</Card>
