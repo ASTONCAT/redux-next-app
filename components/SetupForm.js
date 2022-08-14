@@ -18,9 +18,11 @@ function SetupForm(props) {
 
 		props.onSubmitData(enteredData)
 	}
-console.log(props.message)
+
 	return (
 		<Card>
+			<h2 className={classes.title}>Calculator Limit Values</h2>
+			<h4 className={classes.subtitle}>Change the loan calculator limit values</h4>
 			<form className={classes.form} onSubmit={submitHandler}>
 				<div className={classes.control}>
 					<label htmlFor="requestedAmount">Requested Amount</label>
