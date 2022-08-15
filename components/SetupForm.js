@@ -25,19 +25,6 @@ function SetupForm(props) {
 			<h4 className={classes.subtitle}>Change the loan calculator limit values</h4>
 			<form className={classes.form} onSubmit={submitHandler}>
 				<div className={classes.field}>
-					<label htmlFor="requestedAmount">Requested Amount</label>
-					<input
-						type="number"
-						defaultValue={props.reqValue}
-						required
-						id="requestedAmount"
-						ref={requestedAmountInputRef}
-						step="100"
-						min="100"
-						max="67108864"
-					/>
-				</div>
-				<div className={classes.field}>
 					<label htmlFor="minAmount">Min Amount</label>
 					<input
 						type="number"
@@ -60,6 +47,19 @@ function SetupForm(props) {
 						ref={maxAmountInputRef}
 						step="100"
 						min="200"
+						max="67108864"
+					/>
+				</div>
+				<div className={classes.field}>
+					<label htmlFor="requestedAmount">Requested Amount</label>
+					<input
+						type="number"
+						defaultValue={props.reqValue}
+						required
+						id="requestedAmount"
+						ref={requestedAmountInputRef}
+						step="100"
+						min="100"
 						max="67108864"
 					/>
 				</div>

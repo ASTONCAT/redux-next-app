@@ -6,7 +6,7 @@ function Layout(props) {
 
 	return (
 		<div>
-			<div>TopBar</div>
+			<div className={classes.topbar}>TopBar</div>
 			<main
 				className={router.pathname === '/setup' ? classes.setup : classes.main}
 			>

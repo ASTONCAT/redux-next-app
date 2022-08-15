@@ -8,3 +8,6 @@
 .setup {
   max-width: 26rem;
 }
+.topbar {
+  color: rgba(0,0,0,.4);
+}
