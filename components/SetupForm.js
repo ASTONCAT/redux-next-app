@@ -24,7 +24,7 @@ function SetupForm(props) {
 			<h2 className={classes.title}>Calculator Limit Values</h2>
 			<h4 className={classes.subtitle}>Change the loan calculator limit values</h4>
 			<form className={classes.form} onSubmit={submitHandler}>
-				<div className={classes.control}>
+				<div className={classes.field}>
 					<label htmlFor="requestedAmount">Requested Amount</label>
 					<input
 						type="number"
@@ -37,7 +37,7 @@ function SetupForm(props) {
 						max="67108864"
 					/>
 				</div>
-				<div className={classes.control}>
+				<div className={classes.field}>
 					<label htmlFor="minAmount">Min Amount</label>
 					<input
 						type="number"
@@ -50,7 +50,7 @@ function SetupForm(props) {
 						max="67108864"
 					/>
 				</div>
-				<div className={classes.control}>
+				<div className={classes.field}>
 					<label htmlFor="maxAmount">Max Amount</label>
 					<input
 						type="number"
@@ -64,6 +64,7 @@ function SetupForm(props) {
 					/>
 				</div>
 				<div className={classes.submit}>
+					<div></div>
 					<button>Submit</button>
 				</div>
 			</form>
