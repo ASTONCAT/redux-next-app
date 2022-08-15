@@ -24,7 +24,7 @@ const handler = async (req, res) => {
 					// Send a response
 					res.status(201).json({
 						error: false,
-						message: 'A new setup inserted! Changes will be applied after a few minutes'
+						message: 'A new setup inserted! Changes will take effect after a few minutes'
 					})
 				} else {
 					res.status(412).json({
