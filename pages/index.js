@@ -29,7 +29,7 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
 		props: {
 			message: 'revalidace'
 		},
-		revalidate: 3600 // In seconds
+		revalidate: 180 // In seconds
 	}
 })
 
